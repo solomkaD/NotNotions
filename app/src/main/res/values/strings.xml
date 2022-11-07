@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NotNotions</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_main">Main</string>
+    <string name="title_generator">Generator</string>
+    <string name="GeneratedPassword">password</string>
+    <string name="DefaultPassLength">8</string>
+    <string name="Digits">Цифры</string>
+    <string name="Uppercase">Заглавные</string>
+    <string name="SpecialCharacters">Спец. символы</string>
+    <string name="GenerateButton">Сгенерировать</string>
+    <string name="NewElement">Новый элемент</string>
+    <string name="title_activity_new_element">NewElement</string>
+    <string name="large_text">text</string>
+    <string name="action_settings">Settings</string>
+</resources>
