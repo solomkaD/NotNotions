@@ -30,7 +30,7 @@ private var _binding: FragmentMainBinding? = null
     _binding = FragmentMainBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    val buttonNewElement: FloatingActionButton = binding.buttonNewElement
+      val buttonNewElement: FloatingActionButton = binding.buttonNewElement
 
       buttonNewElement?.setOnClickListener{
           val intent = Intent(activity, NewElementActivity::class.java)
