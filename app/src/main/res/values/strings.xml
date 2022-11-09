@@ -10,7 +10,7 @@
     <string name="SpecialCharacters">Спец. символы</string>
     <string name="GenerateButton">Сгенерировать</string>
     <string name="NewElement">Новый элемент</string>
-    <string name="ElementName">Label</string>
+    <string name="newElementLabel">Label</string>
     <string name="title_activity_new_element">NewElement</string>
     <string name="large_text">text</string>
     <string name="action_settings">Settings</string>

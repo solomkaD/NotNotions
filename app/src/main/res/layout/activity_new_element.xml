@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/favoriteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fab_margin"
@@ -37,15 +37,15 @@
             app:toolbarId="@+id/materialToolbar"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
-            app:title="@string/ElementName" >
+            app:title="@string/newElementLabel" >
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/newElementLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="@string/ElementName"
+                android:inputType="text"
+                android:hint="@string/newElementLabel"
                 android:textColorHint="#FFFF"
                 android:textCursorDrawable="@drawable/white_cursor"
                 android:textSize="32sp"
@@ -111,12 +111,6 @@
             android:paddingStart="5dp"
             android:paddingEnd="0dp"/>
 
-        <Button
-            android:id="@+id/newElementButtonGenerate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GenerateButton" />
-
         <TextView
             android:id="@+id/textSite"
             android:layout_width="match_parent"
@@ -154,5 +148,15 @@
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/applyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_apply_24"
+        android:backgroundTint="#FF9800"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="30dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
