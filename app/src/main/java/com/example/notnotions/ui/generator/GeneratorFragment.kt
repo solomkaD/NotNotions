@@ -40,12 +40,12 @@ class GeneratorFragment : Fragment() {
         val switchUppercase: SwitchMaterial = binding.switchUppercase
 
 
-        buttonGenerate?.setOnClickListener {
+        buttonGenerate.setOnClickListener {
             val length: Int
             val digitsOn: Boolean = switchDigits.isChecked()
             val specialCharactersOn: Boolean = switchSpecialCharacters.isChecked()
             val uppercaseOn: Boolean = switchUppercase.isChecked()
-            if (passLength?.text?.toString()?.trim()?.equals("")!!)
+            if (passLength.text?.toString()?.trim()?.equals("")!!)
                 length = 8
             else {
                 length = passLength.text.toString().toInt()

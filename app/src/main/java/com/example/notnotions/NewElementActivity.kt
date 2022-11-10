@@ -30,6 +30,9 @@ class NewElementActivity : AppCompatActivity() {
         val newSiteUrl: EditText = findViewById(R.id.newElementSite)
         val newNote: TextInputEditText = findViewById(R.id.newElementNote)
 
+        val filename = "myFile"
+        val mapper = jacksonObjectMapper()
+
         val elementData = ElementData(
             newElementLabel.text.toString(),
             newLogin.text.toString(),
@@ -38,19 +41,20 @@ class NewElementActivity : AppCompatActivity() {
             newNote.text.toString(),
             true)
 
-        val filename = "myfile"
-        val string = "Hello world!"
-        val outputStream: FileOutputStream
+        val elementDataJson = mapper.writeValueAsString(elementData)
 
-        try {
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE)
-            outputStream.write(string.toByteArray())
-            outputStream.close()
-        } catch (e: Exception) {
-            e.printStackTrace()
+        buttonApply.setOnClickListener{
+            val outputStream: FileOutputStream
+            try {
+                outputStream = openFileOutput(filename, Context.MODE_PRIVATE)
+                outputStream.write(elementDataJson.toByteArray())
+                outputStream.close()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
 
-        }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
