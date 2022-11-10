@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import java.io.FileOutputStream
-import com.example.notnotions.ElementData
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 
 class NewElementActivity : AppCompatActivity() {
 
@@ -30,20 +29,22 @@ class NewElementActivity : AppCompatActivity() {
         val newSiteUrl: EditText = findViewById(R.id.newElementSite)
         val newNote: TextInputEditText = findViewById(R.id.newElementNote)
 
-        val filename = "myFile"
-        val mapper = jacksonObjectMapper()
 
-        val elementData = ElementData(
-            newElementLabel.text.toString(),
-            newLogin.text.toString(),
-            newPassword.text.toString(),
-            newSiteUrl.text.toString(),
-            newNote.text.toString(),
-            true)
-
-        val elementDataJson = mapper.writeValueAsString(elementData)
 
         buttonApply.setOnClickListener{
+            val mapper = jacksonObjectMapper()
+
+            val elementData = ElementData(
+                newElementLabel.text.toString(),
+                newLogin.text.toString(),
+                newPassword.text.toString(),
+                newSiteUrl.text.toString(),
+                newNote.text.toString(),
+                true)
+
+            val elementDataJson = mapper.writeValueAsString(elementData)
+
+            val filename = "test2.json"
             val outputStream: FileOutputStream
             try {
                 outputStream = openFileOutput(filename, Context.MODE_PRIVATE)
@@ -52,9 +53,11 @@ class NewElementActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-        }
 
+        }
     }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
