@@ -1,13 +1,15 @@
 package com.example.notnotions
 
+import android.content.Context
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
+import java.io.FileOutputStream
+import com.example.notnotions.ElementData
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 
 class NewElementActivity : AppCompatActivity() {
 
@@ -21,13 +23,32 @@ class NewElementActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        val buttonApply: Button = findViewById(R.id.applyButton)
+        val buttonApply: FloatingActionButton = findViewById(R.id.applyButton)
+        val newElementLabel: EditText = findViewById(R.id.newElementLabel)
         val newLogin: EditText = findViewById(R.id.newElementLogin)
         val newPassword: EditText = findViewById(R.id.newElementPassword)
         val newSiteUrl: EditText = findViewById(R.id.newElementSite)
         val newNote: TextInputEditText = findViewById(R.id.newElementNote)
 
+        val elementData = ElementData(
+            newElementLabel.text.toString(),
+            newLogin.text.toString(),
+            newPassword.text.toString(),
+            newSiteUrl.text.toString(),
+            newNote.text.toString(),
+            true)
 
+        val filename = "myfile"
+        val string = "Hello world!"
+        val outputStream: FileOutputStream
+
+        try {
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE)
+            outputStream.write(string.toByteArray())
+            outputStream.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         }
 
