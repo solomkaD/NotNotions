@@ -19,9 +19,9 @@
         app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/ic_add_element_24" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
+        android:id="@+id/listElement"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="55dp" />
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

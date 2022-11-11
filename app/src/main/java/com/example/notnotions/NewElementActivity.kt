@@ -33,15 +33,18 @@ class NewElementActivity : AppCompatActivity() {
 
         buttonApply.setOnClickListener{
 
-            val elementData = ElementData(
-                newElementLabel.text.toString(),
+            val elementData = Element.ElementData(
                 newLogin.text.toString(),
                 newPassword.text.toString(),
                 newSiteUrl.text.toString(),
                 newNote.text.toString(),
                 false)
 
-            val result: Boolean = Tools().addNewElement(this, elementData)
+            val element = Element(
+                newElementLabel.text.toString(),
+                elementData)
+
+            val result: Boolean = Tools().addNewElement(this, element)
 
             if(result){
                 val intent = Intent(this, MainActivity::class.java)
