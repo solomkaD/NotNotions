@@ -1,14 +1,15 @@
 package com.example.notnotions
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.example.notnotions.ui.Tools
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
-import java.io.FileOutputStream
+
 
 class NewElementActivity : AppCompatActivity() {
 
@@ -22,6 +23,7 @@ class NewElementActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
+
         val buttonApply: FloatingActionButton = findViewById(R.id.applyButton)
         val newElementLabel: EditText = findViewById(R.id.newElementLabel)
         val newLogin: EditText = findViewById(R.id.newElementLogin)
@@ -29,10 +31,7 @@ class NewElementActivity : AppCompatActivity() {
         val newSiteUrl: EditText = findViewById(R.id.newElementSite)
         val newNote: TextInputEditText = findViewById(R.id.newElementNote)
 
-
-
         buttonApply.setOnClickListener{
-            val mapper = jacksonObjectMapper()
 
             val elementData = ElementData(
                 newElementLabel.text.toString(),
@@ -40,24 +39,20 @@ class NewElementActivity : AppCompatActivity() {
                 newPassword.text.toString(),
                 newSiteUrl.text.toString(),
                 newNote.text.toString(),
-                true)
+                false)
 
-            val elementDataJson = mapper.writeValueAsString(elementData)
+            val result: Boolean = Tools().addNewElement(this, elementData)
 
-            val filename = "test2.json"
-            val outputStream: FileOutputStream
-            try {
-                outputStream = openFileOutput(filename, Context.MODE_PRIVATE)
-                outputStream.write(elementDataJson.toByteArray())
-                outputStream.close()
-            } catch (e: Exception) {
-                e.printStackTrace()
+            if(result){
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            else{
+                Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
             }
 
         }
     }
-
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
