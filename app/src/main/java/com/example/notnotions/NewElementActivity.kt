@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.room.Room
 import com.example.notnotions.ui.Tools
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
@@ -31,8 +32,13 @@ class NewElementActivity : AppCompatActivity() {
         val newSiteUrl: EditText = findViewById(R.id.newElementSite)
         val newNote: TextInputEditText = findViewById(R.id.newElementNote)
 
-        val db: AppDatabase? = App.instance?.database
-        val elementsDao: ElementsDao = db!!.getElementsDao()
+//        val db: AppDatabase? = App.instance?.database
+//        val elementsDao: ElementsDao = db!!.getElementsDao()
+
+        val db = Room.databaseBuilder(this, AppDatabase::class.java, "nn_db")
+            .allowMainThreadQueries()
+            .build()
+        val elementsDao: ElementsDao = db.getElementsDao()
 
         buttonApply.setOnClickListener{
 

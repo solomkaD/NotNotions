@@ -12,6 +12,7 @@ class App : Application() {
         super.onCreate()
         instance = this
         database = Room.databaseBuilder(this, AppDatabase::class.java, "nn_db")
+            .allowMainThreadQueries()
             .build()
     }
 

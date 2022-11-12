@@ -1,14 +1,21 @@
 package com.example.notnotions.ui.main
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
+import com.example.notnotions.AppDatabase
+import com.example.notnotions.Element
+import com.example.notnotions.ElementsDao
 import com.example.notnotions.NewElementActivity
 import com.example.notnotions.databinding.FragmentMainBinding
+import com.example.notnotions.ui.Tools
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -31,9 +38,19 @@ private var _binding: FragmentMainBinding? = null
       val root: View = binding.root
 
       val buttonNewElement: FloatingActionButton = binding.buttonNewElement
+      val listElement: ListView = binding.listElement
 
-      //val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, list!!)
-      //listElement.adapter = adapter
+
+      val db = Room.databaseBuilder(requireContext(), AppDatabase::class.java, "nn_db")
+          .allowMainThreadQueries()
+          .build()
+      val elementsDao: ElementsDao = db.getElementsDao()
+
+
+      val list: List<Element> = Tools(elementsDao).getElement()
+
+      val adapter = ArrayAdapter(requireContext(), R.layout.simple_list_item_1, list)
+      listElement.adapter = adapter
 
 
       buttonNewElement.setOnClickListener{
