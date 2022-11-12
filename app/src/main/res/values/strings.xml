@@ -12,8 +12,6 @@
     <string name="NewElement">Новый элемент</string>
     <string name="newElementLabel">Label</string>
     <string name="title_activity_new_element">NewElement</string>
-    <string name="large_text">text</string>
-    <string name="action_settings">Settings</string>
     <string name="Note">Заметка</string>
     <string name="UserName">Имя пользователя</string>
     <string name="Password">Пароль</string>

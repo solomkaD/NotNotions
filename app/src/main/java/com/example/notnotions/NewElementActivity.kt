@@ -31,29 +31,21 @@ class NewElementActivity : AppCompatActivity() {
         val newSiteUrl: EditText = findViewById(R.id.newElementSite)
         val newNote: TextInputEditText = findViewById(R.id.newElementNote)
 
+        val db: AppDatabase? = App.instance?.database
+        val elementsDao: ElementsDao = db!!.getElementsDao()
+
         buttonApply.setOnClickListener{
 
-            val elementData = Element.ElementData(
+            val elementData = Element(
+                0,
+                newElementLabel.text.toString(),
                 newLogin.text.toString(),
                 newPassword.text.toString(),
                 newSiteUrl.text.toString(),
                 newNote.text.toString(),
                 false)
 
-            val element = Element(
-                newElementLabel.text.toString(),
-                elementData)
-
-            val result: Boolean = Tools().addNewElement(this, element)
-
-            if(result){
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
-            else{
-                Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
-            }
-
+            Tools(elementsDao).createElement(elementData)
         }
     }
 
