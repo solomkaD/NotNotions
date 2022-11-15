@@ -40,6 +40,7 @@ class NewElementActivity : AppCompatActivity() {
             .build()
         val elementsDao: ElementsDao = db.getElementsDao()
 
+
         buttonApply.setOnClickListener{
 
             val elementData = Element(

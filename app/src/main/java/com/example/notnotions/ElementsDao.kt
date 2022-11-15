@@ -13,6 +13,6 @@ interface ElementsDao {
     @Query("SELECT * FROM elements WHERE label = :label")
     fun findElementByLabel(label: String): List<Element>
 
-    @Query("SELECT * FROM elements")
-    fun findElement(): List<Element>
+    @Query("SELECT label FROM elements")
+    fun findElement(): List<String>
 }

@@ -18,7 +18,7 @@ class Tools (
         return elementsDao.findElementByLabel(label)
     }
 
-    fun getElement(): List<Element> {
+    fun getElement(): List<String> {
         return elementsDao.findElement()
     }
 
