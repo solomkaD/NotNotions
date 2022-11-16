@@ -1,23 +1,19 @@
 package com.example.notnotions.ui.main
 
-import android.app.ListActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ListPopupWindow
 import android.widget.ListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.ListFragment
 import androidx.room.Room
 import com.example.notnotions.*
 import com.example.notnotions.databinding.FragmentMainBinding
-import com.example.notnotions.ui.Tools
+import com.example.notnotions.Tools
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 
 class MainFragment : Fragment() {
@@ -43,21 +39,12 @@ private var _binding: FragmentMainBinding? = null
 
       val listElement: ListView = binding.listElements
 
-      val listValues = ArrayList<String>()
-      listValues.add("Android")
-      listValues.add("iOS")
-      listValues.add("Symbian")
-      listValues.add("Blackberry")
-      listValues.add("Windows Phone")
-
-      val adapter: ArrayAdapter<String> = ArrayAdapter(requireContext(), R.layout.row_element_layout, R.id.listText, listValues)
+      val adapter: ArrayAdapter<String> = ArrayAdapter(requireContext(), R.layout.row_element_layout, R.id.listText, list)
       listElement.adapter=adapter
 
-      listElement.setOnItemClickListener { parent, view, position, id ->
-        if (position==0){
-            val intent = Intent(activity, NewElementActivity::class.java)
-            startActivity(intent)
-        }
+      listElement.setOnItemClickListener { parent, _, position, _ ->
+          val selectedItem: String = parent.getItemAtPosition(position).toString()
+          Toast.makeText(requireContext(), selectedItem, Toast.LENGTH_LONG).show()
       }
 
 

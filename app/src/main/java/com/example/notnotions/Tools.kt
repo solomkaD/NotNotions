@@ -1,4 +1,4 @@
-package com.example.notnotions.ui
+package com.example.notnotions
 
 import com.example.notnotions.Element
 import com.example.notnotions.ElementEntityDB
