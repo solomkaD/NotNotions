@@ -41,14 +41,13 @@ class GeneratorFragment : Fragment() {
 
 
         buttonGenerate.setOnClickListener {
-            val length: Int
-            val digitsOn: Boolean = switchDigits.isChecked()
-            val specialCharactersOn: Boolean = switchSpecialCharacters.isChecked()
-            val uppercaseOn: Boolean = switchUppercase.isChecked()
-            if (passLength.text?.toString()?.trim()?.equals("")!!)
-                length = 8
+            val digitsOn: Boolean = switchDigits.isChecked
+            val specialCharactersOn: Boolean = switchSpecialCharacters.isChecked
+            val uppercaseOn: Boolean = switchUppercase.isChecked
+            val length: Int = if (passLength.text?.toString()?.trim()?.equals("")!!)
+                8
             else {
-                length = passLength.text.toString().toInt()
+                passLength.text.toString().toInt()
             }
             generatedPassword.text = getRandPassword(length, digitsOn, specialCharactersOn, uppercaseOn)
         }
