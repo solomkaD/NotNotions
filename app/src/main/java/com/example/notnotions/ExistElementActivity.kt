@@ -2,6 +2,8 @@ package com.example.notnotions
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.room.Room
@@ -27,6 +29,7 @@ class ExistElementActivity : AppCompatActivity() {
         val textPassword: TextView = findViewById(R.id.ElementPassword)
         val textSite: TextView = findViewById(R.id.ElementSite)
         val textNote: TextView = findViewById(R.id.ElementNote)
+        val buttonShowPassword: ImageButton = findViewById(R.id.buttonShowPassword)
 
         textLabel.text = element.label
         textUserName.text = element.username
