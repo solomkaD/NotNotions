@@ -14,7 +14,7 @@ class Tools (
         elementsDao.createElement(entity)
     }
 
-    fun getElementByLabel(label: String): List<Element> {
+    fun getElementByLabel(label: String): Element {
         return elementsDao.findElementByLabel(label)
     }
 

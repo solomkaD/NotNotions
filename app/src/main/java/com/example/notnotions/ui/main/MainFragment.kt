@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.example.notnotions.*
@@ -44,10 +43,10 @@ private var _binding: FragmentMainBinding? = null
 
       listElement.setOnItemClickListener { parent, _, position, _ ->
           val selectedItem: String = parent.getItemAtPosition(position).toString()
-          //val element: Element = Tools(elementsDao).getElementByLabel(selectedItem)
-          val intent = Intent(activity, NewElementActivity::class.java).apply {
-              putExtra("element", selectedItem)
+          val intent = Intent(activity, ExistElementActivity::class.java).apply {
+              putExtra("label", selectedItem)
           }
+          startActivity(intent)
 //          Toast.makeText(requireContext(), selectedItem, Toast.LENGTH_LONG).show()
       }
 

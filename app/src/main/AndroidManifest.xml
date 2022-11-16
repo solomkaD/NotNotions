@@ -13,6 +13,13 @@
         android:theme="@style/Theme.NotNotions"
         tools:targetApi="31">
         <activity
+            android:name=".ExistElementActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".NewElementActivity"
             android:exported="false"
             android:label="@string/title_activity_new_element"
