@@ -44,7 +44,11 @@ private var _binding: FragmentMainBinding? = null
 
       listElement.setOnItemClickListener { parent, _, position, _ ->
           val selectedItem: String = parent.getItemAtPosition(position).toString()
-          Toast.makeText(requireContext(), selectedItem, Toast.LENGTH_LONG).show()
+          //val element: Element = Tools(elementsDao).getElementByLabel(selectedItem)
+          val intent = Intent(activity, NewElementActivity::class.java).apply {
+              putExtra("element", selectedItem)
+          }
+//          Toast.makeText(requireContext(), selectedItem, Toast.LENGTH_LONG).show()
       }
 
 
