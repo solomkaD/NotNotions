@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.example.notnotions.*
 import com.example.notnotions.databinding.FragmentMainBinding
-import com.example.notnotions.Tools
+import com.example.notnotions.DBFunctions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -34,7 +34,7 @@ private var _binding: FragmentMainBinding? = null
           .allowMainThreadQueries()
           .build()
       val elementsDao: ElementsDao = db.getElementsDao()
-      val list: List<String> = Tools(elementsDao).getElement()
+      val list: List<String> = DBFunctions(elementsDao).getElement()
 
       val listElement: ListView = binding.listElements
 

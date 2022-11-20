@@ -1,25 +1,45 @@
 package com.example.notnotions
 
-import com.example.notnotions.Element
-import com.example.notnotions.ElementEntityDB
-import com.example.notnotions.ElementsDao
+import kotlin.random.Random
+
+class Tools {
+
+    fun getRandPassword(
+        length: Int,
+        digitsOn: Boolean,
+        specialCharactersOn:
+        Boolean, uppercaseOn:
+        Boolean
+    ): String {
+        var characterSet = "abcdefghijklmnopqrstuvwxyz"
+        val digits = "0123456789"
+        val uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        val special = "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~"
+        if (digitsOn and specialCharactersOn and uppercaseOn)
+            characterSet += digits + uppercase + special
+        else if (digitsOn and uppercaseOn)
+            characterSet += digits + uppercase
+        else if (digitsOn and specialCharactersOn)
+            characterSet += digits + special
+        else if (digitsOn)
+            characterSet += digits
+        else if (uppercaseOn and specialCharactersOn)
+            characterSet += uppercase + special
+        else if (uppercaseOn)
+            characterSet += uppercase
+        else if (specialCharactersOn)
+            characterSet += special
 
 
-class Tools (
-    private val elementsDao: ElementsDao
-        ) {
+        val random = Random(System.nanoTime())
+        val password = StringBuilder()
 
-    fun createElement(element: Element) {
-        val entity = ElementEntityDB.fromNewElement(element)
-        elementsDao.createElement(entity)
+        for (i in 0 until length) {
+            val rIndex = random.nextInt(characterSet.length)
+            password.append(characterSet[rIndex])
+        }
+
+        return password.toString()
+
     }
-
-    fun getElementByLabel(label: String): Element {
-        return elementsDao.findElementByLabel(label)
-    }
-
-    fun getElement(): List<String> {
-        return elementsDao.findElement()
-    }
-
 }

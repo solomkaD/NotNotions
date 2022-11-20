@@ -1,10 +1,14 @@
 package com.example.notnotions
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "elements"
+    tableName = "elements",
+//    indices = [
+//            Index("label", unique = true )
+//    ]
 )
 data class ElementEntityDB (
     @PrimaryKey(autoGenerate = true) val id: Long,

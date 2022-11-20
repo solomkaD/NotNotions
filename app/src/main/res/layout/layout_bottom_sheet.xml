@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bottom_sheet_background">
+
+    <EditText
+        android:id="@+id/numberOfCharacters"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/DefaultPassLength"
+        android:autofillHints="8"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchDigits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:checked="true"
+        android:minHeight="48dp"
+        android:text="@string/Digits"
+        android:textSize="16sp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchUppercase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:checked="true"
+        android:minHeight="48dp"
+        android:text="@string/Uppercase"
+        android:textSize="16sp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchSpecialCharacters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:minHeight="48dp"
+        android:text="@string/SpecialCharacters"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/buttonGenerate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/GenerateButton"
+        android:textSize="24sp" />
+
+</LinearLayout>

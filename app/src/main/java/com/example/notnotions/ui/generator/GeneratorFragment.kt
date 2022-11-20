@@ -9,9 +9,10 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.notnotions.DBFunctions
+import com.example.notnotions.Tools
 import com.example.notnotions.databinding.FragmentGeneratorBinding
 import com.google.android.material.switchmaterial.SwitchMaterial
-import kotlin.random.Random
 
 class GeneratorFragment : Fragment() {
 
@@ -49,7 +50,7 @@ class GeneratorFragment : Fragment() {
             else {
                 passLength.text.toString().toInt()
             }
-            generatedPassword.text = getRandPassword(length, digitsOn, specialCharactersOn, uppercaseOn)
+            generatedPassword.text = Tools().getRandPassword(length, digitsOn, specialCharactersOn, uppercaseOn)
         }
 
 
@@ -61,42 +62,4 @@ class GeneratorFragment : Fragment() {
         _binding = null
     }
 
-    private fun getRandPassword(
-        length: Int,
-        digitsOn: Boolean,
-        specialCharactersOn:
-        Boolean, uppercaseOn:
-        Boolean
-    ): String {
-        var characterSet = "abcdefghijklmnopqrstuvwxyz"
-        val digits = "0123456789"
-        val uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        val special = "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~"
-        if (digitsOn and specialCharactersOn and uppercaseOn)
-            characterSet += digits + uppercase + special
-        else if (digitsOn and uppercaseOn)
-            characterSet += digits + uppercase
-        else if (digitsOn and specialCharactersOn)
-            characterSet += digits + special
-        else if (digitsOn)
-            characterSet += digits
-        else if (uppercaseOn and specialCharactersOn)
-            characterSet += uppercase + special
-        else if (uppercaseOn)
-            characterSet += uppercase
-        else if (specialCharactersOn)
-            characterSet += special
-
-
-        val random = Random(System.nanoTime())
-        val password = StringBuilder()
-
-        for (i in 0 until length) {
-            val rIndex = random.nextInt(characterSet.length)
-            password.append(characterSet[rIndex])
-        }
-
-        return password.toString()
-
-    }
 }
